@@ -20,25 +20,36 @@ module.exports = () => {
     },
     plugins: [
       new GenerateSW(),
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+        title: "JATE",
+      }),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
+      }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Text Editor',
         short_name: 'Text',
-        description: 'Edits Test',
+        description: 'Edits Text',
         background_color: '#ffffff',
-        crossorigin: '', //can be null, use-credentials or anonymous
+        theme_color: "000000",
         start_url: "./",
         publicPath: "./",
         icons: [
           {
-            src: path.resolve('src/css/images/logo.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
             destination: path.join("assets", "icons"),
           },
           {
-            src: path.resolve("src/css/images/logo.png"),
+            src: path.resolve("src/images/logo.png"),
             size: "1024x1024",
             destination: path.join("assets", "icons"),
-            purpose: "maskable",
+            purpose: "maskable", 
+        
           }
         ]
       })
