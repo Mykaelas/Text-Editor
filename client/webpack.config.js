@@ -35,7 +35,7 @@ module.exports = () => {
             destination: path.join("assets", "icons"),
           },
           {
-            src: path.resolve("src/images/logo.png"),
+            src: path.resolve("src/css/images/logo.png"),
             size: "1024x1024",
             destination: path.join("assets", "icons"),
             purpose: "maskable",
